@@ -38,7 +38,7 @@ def page_info(page):
             }
 
 def scrape_images(compression):
-    for p in range(11, int(l_page)):
+    for p in range(int(f_page), int(l_page)):
         page = page_info(p)
         sys.stdout.write(f"\rCurrently Scraping page {p}")
         sys.stdout.flush()
