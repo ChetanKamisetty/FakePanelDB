@@ -78,11 +78,12 @@ def scrape_site():
                 continue
 
             # Save the downloaded font file to disk
-            with open(os.path.join(file_path, f"{i}_{j}.zip"), 'wb') as f:
-                f.write(download_font.content)
+            with open(os.path.join(file_path, f"{i}_{j}.zip"), 'ab') as f:
+                for chunk in download_font.iter_content(chunk_size=2048):
+                    f.write(chunk)
 
-            # Wait 10 seconds to not overload the site and downloads
-            time.sleep(10)
+            # Wait to not overload the site and downloads
+            time.sleep(5)
 
         print(f"Finished scraping page {i}")
 
